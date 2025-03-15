@@ -1,6 +1,6 @@
 """This module provides example tools for web scraping and search functionality.
 
-It includes a basic Tavily search function (as an example)
+It includes a basic Tavily search function (as an example) and MCP tools for various services.
 
 These tools are intended as free examples to get started. For production use,
 consider implementing more robust and specialized tools tailored to your needs.
@@ -14,6 +14,7 @@ from langchain_core.tools import InjectedToolArg
 from typing_extensions import Annotated
 
 from react_agent.configuration import Configuration
+from react_agent.mcp_integration import MCP_TOOLS
 
 
 async def search(
@@ -31,4 +32,5 @@ async def search(
     return cast(list[dict[str, Any]], result)
 
 
-TOOLS: List[Callable[..., Any]] = [search]
+# Combine standard tools with MCP tools
+TOOLS: List[Callable[..., Any]] = [search] + MCP_TOOLS
