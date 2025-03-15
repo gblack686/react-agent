@@ -1,0 +1,12 @@
+{
+  "name": "mcp-server",
+  "version": "1.0.0",
+  "description": "MCP Server for LangGraph agent",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@smithery/jina-ai-mcp-server": "latest"
+  }
+} 

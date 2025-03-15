@@ -14,7 +14,14 @@ from langchain_core.tools import InjectedToolArg
 from typing_extensions import Annotated
 
 from react_agent.configuration import Configuration
-from react_agent.mcp_integration import MCP_TOOLS
+
+# Import MCP tools safely
+try:
+    from react_agent.mcp_integration import MCP_TOOLS
+    HAS_MCP = True
+except ImportError:
+    MCP_TOOLS = []
+    HAS_MCP = False
 
 
 async def search(
@@ -32,5 +39,9 @@ async def search(
     return cast(list[dict[str, Any]], result)
 
 
-# Combine standard tools with MCP tools
-TOOLS: List[Callable[..., Any]] = [search] + MCP_TOOLS
+# Start with basic tools
+TOOLS: List[Callable[..., Any]] = [search]
+
+# Add MCP tools if available
+if HAS_MCP:
+    TOOLS.extend(MCP_TOOLS)

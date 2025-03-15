@@ -15,7 +15,7 @@ from typing_extensions import Annotated
 
 
 # MCP server configuration
-MCP_SERVER_URL = os.environ.get("MCP_SERVER_URL", "http://jina-mcp:8080")
+MCP_SERVER_URL = os.environ.get("MCP_SERVER_URL", "http://localhost:8000")
 MCP_API_KEY = os.environ.get("JINA_MCP_API_KEY", "")
 
 
@@ -30,11 +30,14 @@ async def _call_mcp_server(endpoint: str, method: str = "GET", data: Optional[Di
     Returns:
         The response from the MCP server
     """
-    url = f"{MCP_SERVER_URL}/{endpoint}"
+    url = f"{MCP_SERVER_URL}/mcp/{endpoint}"
     headers = {
-        "Authorization": f"Bearer {MCP_API_KEY}",
         "Content-Type": "application/json"
     }
+    
+    # Add Authorization header if API key is provided
+    if MCP_API_KEY:
+        headers["Authorization"] = f"Bearer {MCP_API_KEY}"
     
     async with httpx.AsyncClient() as client:
         if method == "GET":
