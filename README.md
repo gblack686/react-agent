@@ -1,4 +1,5 @@
 # LangGraph ReAct Agent with MCP Integration
+<!-- Updated deployment configuration -->
 
 This project demonstrates how to build a ReAct agent using LangGraph that can access external services via the Model Context Protocol (MCP).
 
