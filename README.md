@@ -1,5 +1,37 @@
-# LangGraph ReAct Agent with MCP Integration
+# Langchain React Agent Tutorial Broken Fork
+
 <!-- Updated deployment configuration -->
+
+> **WARNING: LOCAL TESTING INSTRUCTIONS**
+> 
+> This project has significant differences between local testing and deployment behavior:
+> 
+> 1. **Environment setup issues:**
+>    - LangGraph modules may not import properly locally
+>    - Supabase client may not be available
+> 
+> 2. **Running the MCP server locally:**
+>    - Navigate to the mcp-server directory: `cd mcp-server`
+>    - Install dependencies first: `npm install`
+>    - Start the server: `node index.js`
+>    - Keep the server running in a separate terminal
+> 
+> 3. **Running the FastAPI server locally:**
+>    - In a separate terminal: `python -m uvicorn src.app:app --reload`
+>    - Test endpoints at http://127.0.0.1:8000
+> 
+> 4. **Testing workflow:**
+>    - Always test functionality locally before deploying
+>    - Verify both MCP server and FastAPI server logs for errors
+>    - Check Supabase connection and authentication
+>    - Input format may differ between local and deployed environments
+> 
+> 5. **Deployment issues:**
+>    - Update environment variables directly in LangSmith rather than including them in code
+>    - "Overloaded" errors may indicate rate limiting in Supabase
+>    - Verify API key permissions
+
+# LangGraph ReAct Agent with MCP Integration
 
 This project demonstrates how to build a ReAct agent using LangGraph that can access external services via the Model Context Protocol (MCP).
 
